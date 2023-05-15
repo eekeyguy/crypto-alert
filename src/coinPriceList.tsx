@@ -30,7 +30,7 @@ const App1 = () => {
   const checkNotification = (coins: Cryptocurrency[]) => {
     let shouldNotify = false;
     coins.forEach((coin) => {
-      if (coin.change > 10) {
+      if (coin.change > 5) {
         shouldNotify = true;
         setNotification(true);
         showNotification(coin);
@@ -41,7 +41,7 @@ const App1 = () => {
   const showNotification = (coin: Cryptocurrency) => {
     if (Notification.permission === "granted") {
       new Notification("Price alert", {
-        body: `Price of ${coin.name} (${coin.symbol}) has increased by over 10% in the last hour! Current price: ${coin.price}`,
+        body: `Price of ${coin.name} (${coin.symbol}) has increased by over 5% in the last hour! Current price: ${coin.price}`,
       });
     } else if (Notification.permission !== "denied") {
       Notification.requestPermission().then((permission) => {
